@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Recommended Posts{% endblock %}
+
+{% block content %}
+<h1 class="mb-4 text-center">✨ Recommended Posts</h1>
+
+{% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+{% else %}
+    {% if recommendations %}
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            {% for post in recommendations %}
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">By: {{ post.author }}</h6>
+                        <p class="card-text">{{ post.body|truncatewords:20 }}</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <a href="{% url 'postview' post.pk %}" class="btn btn-primary btn-sm">View Post</a>
+                        <small class="text-muted">Author: {{ post.author }}</small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info text-center" role="alert">
+            <p>No recommendations available at the moment. Check back later!</p>
+        </div>
+    {% endif %}
+{% endif %}
+
+<a href="{% url 'homepage' %}" class="btn btn-secondary mt-4">Back to Homepage</a>
+{% endblock %}

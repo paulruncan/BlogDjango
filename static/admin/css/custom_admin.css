@@ -1,0 +1,20 @@
+/* static/admin/css/custom_admin.css */
+
+/* Change background color of the admin header */
+#header {
+    background-color: #4CAF50 !important;
+}
+
+/* Customize admin module headings */
+.module h2 {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+/* Style save button */
+input[type="submit"].default {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
